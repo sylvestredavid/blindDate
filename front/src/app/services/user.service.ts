@@ -31,6 +31,6 @@ export class UserService {
   }
 
   getCoordonnees(ville: string) {
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + ville + '&key=AIzaSyB1-PInaNGwoOQdzjfIjf2MeR3Q9WHxhvU')
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + ville + '&key=')
   }
 }
