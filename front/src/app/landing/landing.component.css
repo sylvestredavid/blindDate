@@ -1,0 +1,72 @@
+.nav {
+  padding: 15px 30px;
+}
+
+.nav_img {
+  width: 120px;
+  margin: 0 !important;
+  padding-top: 5px;
+}
+
+.btn{
+  padding: 5px 30px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  margin-left: 20px;
+}
+
+.hover_primary:hover {
+  border: 1px solid #ED147D;
+  color: #ED147D;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hover_light:hover {
+  border: 1px solid #FFF;
+  color: #FFF;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.hover_dark:hover {
+  border: 1px solid #202020;
+  color: #202020;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.img_bg {
+  height: 800px;
+  background: url("../../assets/img/back.png") center center no-repeat;
+}
+
+.img_bg button {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 40px;
+  font-size: 18px;
+  box-shadow: 2px 2px 5px #000;
+}
+
+.img_bg figure {
+  width: 50px;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  cursor: pointer
+}
+
+main{
+  margin: auto
+}
+
+.footer .btn {
+  padding: 15px 50px;
+  border-radius: 30px;
+}

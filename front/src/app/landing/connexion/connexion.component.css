@@ -1,0 +1,147 @@
+.filtre {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.9);
+  padding: 150px 0;
+}
+
+.bg{
+  width: 40%;
+  background-color:rgba(255,255,255, 0.7);
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form {
+  width: 80%;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.input_text, .select {
+  padding: 15px;
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.formControl {
+  margin: 0 auto 20px auto;
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+}
+
+.select:hover {
+  cursor: pointer
+}
+
+.btn {
+  padding: 15px 40px;
+  border: none;
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  width: 30%;
+  font-size: 16px;
+}
+
+.btn_pink:hover {
+  background-color:#ED147D;
+  color: #FFF;
+  cursor: pointer
+}
+
+.btn_active {
+  background-color:#ED147D;
+  color: #FFF;
+}
+
+.btn_fb {
+  background-color: #3b45f4;
+  color: #ffffff;
+  margin: auto 20px;
+  border: 1px solid transparent;
+}
+
+.btn_fb:hover {
+  background-color: #fff;
+  color: #3b45f4;
+  margin: auto 20px;
+  cursor: pointer
+}
+
+.btn_google {
+  background-color: #4285f4;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.btn_google:hover {
+  background-color: #fff;
+  color: #4285f4;
+  cursor: pointer
+}
+
+.step p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.separation{
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.infos{
+  margin: 20px auto;
+}
+
+.input_icon {
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  margin: 0;
+  cursor: pointer
+}
+
+.btn_inscription {
+  border: 3px solid #fff;
+  padding: 15px 50px;
+  width: auto;
+}
+
+.btn_inscription:hover {
+  border: 3px solid #ED147D;
+  background-color:#fff;
+  color: #ED147D;
+  padding: 15px 50px;
+  width: auto;
+  cursor: pointer
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+}
+
+.close:hover {
+  cursor: pointer
+}

@@ -1,0 +1,135 @@
+/**backgrounds**/
+.bg_primary {
+  background-color: #ED147D;
+}
+.bg_secondary {
+  background-color: #073B4C;
+}
+.bg_tertiary {
+  background-color: #118AB2;
+}
+.bg_dark {
+  background-color: #202020;
+}
+.bg_light {
+  background-color: #FFF;
+}
+
+/**texts**/
+.txt_primary {
+  color: #ED147D;
+}
+.txt_secondary {
+  color: #073B4C;
+}
+.txt_tertiary {
+  color: #118AB2;
+}
+.txt_dark {
+  color: #202020;
+}
+.txt_light {
+  color: #FFF;
+}
+.txt_error {
+  color: red;
+  font-weight: bold;
+}
+
+.txt_center {
+  text-align: center;
+}
+
+.size18 {
+  font-size: 18px;
+}
+
+.size26 {
+  font-size: 26px;
+}
+
+/**mise en page**/
+.relative {
+  position: relative
+}
+body {
+  margin: 0;
+}
+.w50 {
+  width: 50%;
+}
+.w20 {
+  width: 20%;
+}
+.w25 {
+  width: 25%;
+}
+.w30 {
+  width: 30%;
+}
+.w40 {
+  width: 40%;
+}
+.w100 {
+  width: 100%;
+}
+
+.float_r {
+  float: right;
+}
+
+button, input, select {
+  outline: transparent;
+}
+
+.clear {
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+.flex {
+  display: flex
+}
+
+.space_between {
+  justify-content: space-between;
+}
+
+.space_around {
+  justify-content: space-around;
+}
+
+.center {
+  justify-content: center;
+}
+
+.align_center {
+  align-items: center;
+}
+
+.mb0 {
+  margin-bottom: 0 !important
+}
+
+.p10 {
+  padding: 10px
+}
+
+.mt40 {
+  margin-top: 40px
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.align_right {
+  text-align: right;
+}

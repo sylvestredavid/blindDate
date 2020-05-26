@@ -1,0 +1,99 @@
+<div class="filtre">
+  <figure class="close" (click)="close()">
+    <img src="assets/img/close.png">
+  </figure>
+  <div class="bg">
+    <div class="form">
+      <div class="flex step">
+        <p class="w50 txt_center bold" [ngClass]="step === 1 ? 'txt_primary' : 'txt_dark'">identifiant</p>
+        <p class="w50 txt_center bold" [ngClass]="step === 2 ? 'txt_primary' : 'txt_dark'">informations</p>
+      </div>
+      <div id="form_un" [ngStyle]="{'display': step === 1 ? 'block' : 'none'}">
+        <div class="formControl">
+          <input class="input_text w100" placeholder="email" type="email" [(ngModel)]="userToCreate.email">
+          <small class="txt_error">{{emailError}}</small>
+        </div>
+        <div class="formControl">
+          <input class="input_text w100" placeholder="username" type="text" [(ngModel)]="userToCreate.username">
+          <small class="txt_error">{{usernameError}}</small>
+        </div>
+        <div class="formControl relative">
+          <input class="input_text w100" placeholder="password" type="{{showPassword ? 'text' : 'password'}}" [(ngModel)]="password">
+          <figure class="input_icon" (click)="showPassword = !showPassword">
+            <img src="{{showPassword ? 'assets/img/crossed_eye.svg' : 'assets/img/eye.svg'}}">
+          </figure>
+          <small class="txt_error">{{passwordError}}</small>
+        </div>
+        <div class="formControl relative">
+          <input class="input_text w100" placeholder="confirm password" type="{{showConfirmPassword ? 'text' : 'password'}}" [(ngModel)]="confirmPassword">
+          <figure class="input_icon" (click)="showConfirmPassword = !showConfirmPassword">
+            <img src="{{showConfirmPassword ? 'assets/img/crossed_eye.svg' : 'assets/img/eye.svg'}}">
+          </figure>
+          <small class="txt_error">{{confirmPasswordError}}</small>
+        </div>
+        <button class="bg_light btn btn_pink float_r" (click)="onCheckAndGo()">next</button>
+        <div class="clear"></div>
+        <p class="txt_dark separation">ou s'inscrire avec</p>
+        <div class="button_container flex center">
+          <button class="btn btn_google">Google</button>
+          <button class="btn btn_fb">Facebook</button>
+        </div>
+      </div>
+      <div id="form_deux" [ngStyle]="{'display': step === 2 ? 'block' : 'none'}">
+        <div class="relative">
+          <input class="input_text mb0 w100" placeholder="Ville" type="text"
+                 [(ngModel)]="userToCreate.profil.localisation.ville">
+          <figure class="input_icon" (click)="getPosition()">
+            <img src="assets/img/pin.png">
+          </figure>
+          <small class="txt_error">{{villeError}}</small>
+        </div>
+        <div class="infos">
+          <p class="txt_dark bold">Je suis un(e)</p>
+          <div class="flex space_around">
+            <button class="bg_light btn btn_pink" (click)="onChangeSexeProfil('Homme')"
+                    [ngClass]="userToCreate.profil.sexe === 'Homme' ? 'btn_active': ''">Homme
+            </button>
+            <button class="bg_light btn btn_pink" (click)="onChangeSexeProfil('Femme')"
+                    [ngClass]="userToCreate.profil.sexe === 'Femme' ? 'btn_active': ''">Femme
+            </button>
+          </div>
+          <small class="txt_error">{{sexeError}}</small>
+        </div>
+        <div class="infos">
+          <p class="txt_dark bold">Je cherche un(e)</p>
+          <div class="flex space_around">
+            <button class="bg_light btn btn_pink" (click)="onChangeSexeRecherche('Homme')"
+                    [ngClass]="userToCreate.recherche.sexe === 'Homme' ? 'btn_active': ''">Homme
+            </button>
+            <button class="bg_light btn btn_pink" (click)="onChangeSexeRecherche('Femme')"
+                    [ngClass]="userToCreate.recherche.sexe === 'Femme' ? 'btn_active': ''">Femme
+            </button>
+          </div>
+          <small class="txt_error">{{rechercheError}}</small>
+        </div>
+        <div class="infos">
+          <p class="txt_dark bold">Date de naissance</p>
+          <div class="flex space_between">
+            <select class="select txt_center w20" [(ngModel)]="jourNaissance">
+              <option>JJ</option>
+              <option *ngFor="let j of joursList" value="{{j}}">{{j}}</option>
+            </select>
+            <select class="select txt_center w20" [(ngModel)]="moisNaissance">
+              <option>MM</option>
+              <option *ngFor="let m of moisList" value="{{m}}">{{m}}</option>
+            </select>
+            <select class="select txt_center w40" [(ngModel)]="anneeNaissance">
+              <option>AAAA</option>
+              <option *ngFor="let a of anneesList" value="{{a}}">{{a}}</option>
+            </select>
+          </div>
+          <small class="txt_error">{{naissanceError}}</small>
+        </div>
+        <div class="flex center">
+          <button class="bg_primary btn txt_light btn_inscription" (click)="onSubmit()">inscription</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

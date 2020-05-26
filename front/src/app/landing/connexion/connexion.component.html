@@ -1,0 +1,29 @@
+<div class="filtre">
+  <figure class="close" (click)="close()">
+    <img src="assets/img/close.png">
+  </figure>
+  <div class="bg">
+    <div class="form">
+      <p class="txt_error txt_center">{{error}}</p>
+      <div class="formControl">
+        <input class="input_text w100" placeholder="username" type="text" [(ngModel)]="username">
+      </div>
+      <div class="formControl relative">
+        <input class="input_text w100" placeholder="password" type="{{showPassword ? 'text' : 'password'}}"
+               [(ngModel)]="password">
+        <figure class="input_icon" (click)="showPassword = !showPassword">
+          <img src="{{showPassword ? 'assets/img/crossed_eye.svg' : 'assets/img/eye.svg'}}">
+        </figure>
+      </div>
+      <div class="flex center">
+          <button class="bg_primary btn txt_light btn_inscription" (click)="onSubmit()">inscription</button>
+      </div>
+      <div class="clear"></div>
+      <p class="txt_dark separation">ou se connecter avec</p>
+      <div class="button_container flex center">
+        <button class="btn btn_google">Google</button>
+        <button class="btn btn_fb">Facebook</button>
+      </div>
+    </div>
+  </div>
+</div>
