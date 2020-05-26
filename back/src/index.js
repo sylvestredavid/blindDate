@@ -6,6 +6,7 @@ import {photoRoutes} from "./routes/photoRoutes";
 import {utils} from "./utils";
 import {notificationRoutes} from "./routes/notificationRoutes";
 import {messageRoutes} from "./routes/messageRoutes";
+import { exec } from 'child_process'
 
 const app = express();
 const PORT = 3000;
@@ -29,4 +30,7 @@ app.get('/', (req, res) => {
     res.send("server node et express sur : " +PORT)
 })
 
-app.listen(PORT, () => console.log(`Server listen port ${PORT}`))
+app.listen(PORT, () =>{
+    console.log(`Server listen port ${PORT}`)
+    exec('cd.. && cd front && ng serve');
+} )
