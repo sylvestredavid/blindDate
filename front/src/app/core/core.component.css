@@ -1,0 +1,127 @@
+.nav {
+  padding: 15px 30px;
+}
+
+.nav_img {
+  width: 120px;
+  margin: 0 !important;
+  padding-top: 5px;
+}
+.btn_icon {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.btn_icon img {
+  width: 25px
+}
+
+.round {
+  border-radius: 50%;
+  border: 0.5px solid black;
+  object-fit: cover;
+}
+
+.btn_icon_active {
+  color: #ED147D;
+}
+
+.btn_icon_active .round {
+  border: 0.5px solid #ED147D;
+}
+
+.round_notification {
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  font-size: 80%;
+  position: absolute;
+  top: -20%;
+  right: 25%;
+}
+
+.round_notification p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notifications {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  width: 400px;
+  box-shadow: 1px 1px 3px #202020;
+  z-index: 10;
+  border-radius: 3px;
+  background-color: #ecedf1;
+}
+
+.notifications:before {
+  content: '';
+  display: block;
+  height: 10px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #ECEDF1;
+  position: absolute;
+  top: -30px;
+  right: 20px;
+}
+
+.popup{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.popup_bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  border-radius: 10px;
+  padding-top: 60px;
+}
+
+.popup_bg .close {
+  width: 20px;
+  position: absolute;
+  top: 10%;
+  right: 3%;
+  cursor: pointer
+}
+
+.message {
+  padding: 5px 20px;
+  border-top: 1px solid black;
+}
+
+.message p {
+  padding-left: 5px;
+}
+
+.popup_bg .img_user {
+  width: 42px;
+  border-radius: 50%;
+}
+
+.popup_bg .username {
+  font-size: 24px;
+}
+
+.newMsg p {
+  color: #ED147D;
+}

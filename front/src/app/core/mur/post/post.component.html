@@ -1,0 +1,59 @@
+<div class="post bg_light relative">
+  <img src="assets/icons/menu.svg" class="menu_icon" *ngIf="isCurentUserProfil" (click)="toggleMenuPost()">
+  <div class="menuPost" *ngIf="openMenuPost" (appClickOutside)="openMenuPost = false">
+    <p (click)="onShowDeletePopup()">
+      Supprimer le post
+    </p>
+    <p (click)="onShowModifPopup()">
+      Modifier le post
+    </p>
+  </div>
+  <div class="flex">
+    <figure class="post_profil_img" (click)="goProfil(user._id)">
+      <img appSquareImage src="{{user.profil.lienPhoto}}"
+           class="round_img"/>
+    </figure>
+    <div>
+      <p class="m0 txt_dark lien_profil" (click)="goProfil(user._id)">{{user.username}}</p>
+      <small class="txt_primary">{{post.date | timeDiff}}</small>
+    </div>
+  </div>
+  <div class="post_content mt10">
+    <p class="pre_wrap">{{post.contenu}}</p>
+  </div>
+  <div class="post_photo mt10" *ngIf="post.lienPhoto">
+    <img src="{{post.lienPhoto}}" />
+  </div>
+  <div class="post_footer mt10 flex space_between">
+    <button class="btn_icon" (click)="toggleLikeEmit(post)">
+      <img src="{{getIfLiked(post.likes)}}"/>
+      <span class="txt_primary">{{post.likes.length}}</span>
+    </button>
+<!--    <button class="btn_icon">-->
+<!--      <img src="assets/icons/comment.svg"/>-->
+<!--      <span class="txt_primary">{{post.commentaires.length}}</span>-->
+<!--    </button>-->
+  </div>
+<!--  <div class="add_com mt10">-->
+<!--    <input type="text" [(ngModel)]="newCom"-->
+<!--  </div>-->
+</div>
+<div class="popup" *ngIf="showDeletePopup">
+  <div class="popup_bg bg_light">
+    <p>Supprimer le post?</p>
+    <div class="flex flex_end">
+      <button class="btn bg_dark txt_light hover_dark" (click)="showDeletePopup = false">Annuler</button>
+      <button class="btn bg_primary txt_light hover_primary ml10" (click)="onDeletePost()">Supprimer</button>
+    </div>
+  </div>
+</div>
+<div class="popup" *ngIf="showModifPopup">
+  <div class="popup_bg bg_light">
+    <p>Modifier le post</p>
+    <textarea appTextareaAutoResize class="edit_post_input" type="text" [(ngModel)]="newContenu" placeholder="Donnez une légende à votre image"></textarea>
+    <div class="flex flex_end mt10">
+      <button class="btn bg_dark txt_light hover_dark" (click)="showModifPopup = false">Annuler</button>
+      <button class="btn bg_primary txt_light hover_primary ml10" (click)="onModifPost()">Modifier</button>
+    </div>
+  </div>
+</div>

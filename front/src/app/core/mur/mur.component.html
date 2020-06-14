@@ -1,0 +1,29 @@
+<div class="new_post bg_light" (click)="openEditNewPost()" *ngIf="isCurentUserMur">
+  <p class="mt0" *ngIf="!editNewPost">écrire</p>
+  <div *ngIf="editNewPost">
+    <textarea appTextareaAutoResize placeholder="Que voulez-vous dire ?" autofocus [(ngModel)]="newPost.contenu" rows="2"></textarea>
+    <ng-container *ngIf="newPost.lienPhoto">
+      <img class="w10" src="{{newPost.lienPhoto}}">
+    </ng-container>
+    <div id="animation" *ngIf="loading" class="w10">
+      <lottie-animation-view
+        [options]="lottieConfig">
+      </lottie-animation-view>
+    </div>
+    <div class="flex space_between">
+      <label for="file" class="btn btn_icon">
+        <img src="assets/icons/camera.svg"/>
+      </label>
+      <input type="file" id="file" (change)="uploadFile($event)" class="display_none"/>
+      <div class="flex center">
+        <button class="btn bg_dark txt_light hover_dark" (click)="closeEditNewPost()">Annuler</button>
+        <button class="btn bg_primary txt_light hover_primary ml10" (click)="onSendNewPost()">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-container *ngFor="let post of mur">
+  <app-post [isCurentUserProfil]="isCurentUserPost(post.userId)" [post]="post" [user]="getUser(post.userId)"
+            (toggleLike)="toggleLike($event)" (deletePost)="onDeletePost($event)"
+            (editPost)="onEditPost($event)"></app-post>
+</ng-container>

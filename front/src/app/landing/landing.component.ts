@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-landing',
@@ -8,14 +8,23 @@ import { Component, OnInit } from '@angular/core';
 export class LandingComponent implements OnInit {
   showInscription: boolean;
   showConnexion: boolean;
+  innerWidth: number;
 
   constructor() { }
 
   ngOnInit() {
     this.showInscription = false
+    this.innerWidth = window.innerWidth;
+    console.log(this.innerWidth)
   }
 
   scroll(el: HTMLElement) {
     el.scrollIntoView();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+    console.log(this.innerWidth)
   }
 }

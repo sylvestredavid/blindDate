@@ -4,9 +4,9 @@ import {
     updateUser,
     loginRequired,
     sign_in,
-    getUsertWithId,
+    getUserContacts,
     existByName,
-    existByEmail
+    existByEmail, getListeAttenteTchat
 } from '../controllers/userController'
 
 export const userRoutes = (app) => {
@@ -25,7 +25,12 @@ export const userRoutes = (app) => {
     app.route('/users/existByName/:name')
         .get(existByName)
 
+    app.route('/users/listeAttenteTchat')
+        .get(getListeAttenteTchat)
+
     app.route('/users/:userId')
-        .get(loginRequired, getUsertWithId)
         .put(loginRequired, updateUser)
+
+    app.route('/users/:userId/contacts')
+        .get(loginRequired, getUserContacts)
 }

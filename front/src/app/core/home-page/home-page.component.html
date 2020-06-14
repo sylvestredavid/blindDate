@@ -1,0 +1,44 @@
+<div class="flex p40">
+  <div class="column1 pt40">
+    <div class="bg_light contacts">
+      <ng-container *ngFor="let contact of contactsConnected">
+        <div class="flex space_between align_center">
+          <div class="flex contact_infos align_center" (click)="go('core/profil/'+contact._id)">
+            <figure class="img_user m0 relative">
+              <img appSquareImage [appBackgroundImage]="contact.profil.lienPhoto">
+              <div class="round bg_primary"></div>
+            </figure>
+            <p class="m0 bold">{{contact.username}}</p>
+          </div>
+          <figure class="m0 tchat" (click)="openTchat(contact)">
+            <img src="assets/icons/chat.svg">
+          </figure>
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let contact of contactsUnConnected">
+        <div class="flex space_between align_center">
+          <div class="flex contact_infos align_center" (click)="go('core/profil/'+contact._id)">
+            <figure class="img_user m0 relative">
+              <img appSquareImage [appBackgroundImage]="contact.profil.lienPhoto">
+              <div class="round unconnected"></div>
+            </figure>
+            <p class="m0 bold">{{contact.username}}</p>
+          </div>
+          <figure class="m0 tchat" (click)="openTchat(contact)">
+            <img src="assets/icons/chat.svg">
+          </figure>
+        </div>
+      </ng-container>
+    </div>
+    <button (click)="goTchatAveugle()">Tchat à l'aveugle</button>
+  </div>
+  <div class="column2 pt40">
+    <app-mur [isCurentUserMur]="true" [mur]="mur"></app-mur>
+  </div>
+</div>
+<ng-container *ngIf="showConversation">
+  <app-conversation [conversation]="conversation" (close)="showConversation = false"></app-conversation>
+</ng-container>
+<ng-container *ngIf="openTchatAveugle">
+  <app-tchat-aveugle [curentUser]="curentUser" (close)="openTchatAveugle = false"></app-tchat-aveugle>
+</ng-container>

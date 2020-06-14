@@ -1,0 +1,35 @@
+<div class="popup" *ngIf="!tchatAveugle">
+  <div class="popup_bg bg_light">
+    <div class="close" (click)="onClose()">
+      <img src="assets/icons/close.svg">
+    </div>
+    <p>Nous chercons un personne correspondant a vos critères de recherche</p>
+  </div>
+</div>
+
+<div class="popup" *ngIf="tchatAveugle">
+  <div class="popup_bg bg_light">
+    <div class="close" (click)="onClose()">
+      <img src="assets/icons/close.svg">
+    </div>
+    <div class="header flex align_center center">
+
+    </div>
+    <div class="messages_container">
+      <ng-container *ngFor="let message of tchatAveugle?.messages">
+        <div class="flex flex_column"
+             [ngClass]="message.userFrom === curentUser._id ? 'message_user' : 'message_contact'">
+          <div class="flex align_center message_header">
+            <div class="img_user" appSquareImage [appBackgroundImage]="getImg(message.userFrom)"></div>
+            <p class="m0 username">{{getUser(message.userFrom).username}}</p>
+          </div>
+          <p class="message_text">{{message.message}}</p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="input_container flex space_between">
+      <textarea appTextareaAutoResize autofocus [(ngModel)]="newMessage" rows="2"></textarea>
+      <button class="btn hover_primary" (click)="onSendMessage()">envoyer</button>
+    </div>
+  </div>
+</div>

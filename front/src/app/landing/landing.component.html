@@ -3,9 +3,9 @@
     <figure class="nav_img">
       <img src="assets/img/logo.png">
     </figure>
-    <div class="btn_container flex">
+    <div class="btn_container flex" *ngIf="innerWidth >= 700">
       <button class="btn bg_primary txt_light hover_primary" (click)="showInscription = true">Inscription</button>
-      <button class="btn bg_dark txt_light hover_dark"(click)="showConnexion = true">Connexion</button>
+      <button class="btn bg_dark txt_light hover_dark" (click)="showConnexion = true">Connexion</button>
     </div>
   </nav>
   <div class="img_bg relative">
@@ -15,69 +15,71 @@
     </figure>
   </div>
 </header>
-<main class="w50" #target>
-  <div class="flex space_around align_center mt40">
-    <figure class="w25">
-      <img src="assets/img/phone1.png">
-    </figure>
-    <div class="w30">
-      <h1>Lorem ipsum dolor</h1>
-      <p class="size18">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in
-        <strong>voluptate velit esse cillum dolore eu</strong>
-        fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id
-        est laborum</p>
+<main class="main" #target>
+  <div class="w50 pt40">
+    <div class="flex space_around align_center mb40">
+      <figure class="w25">
+        <img src="assets/img/phone1.png">
+      </figure>
+      <div class="w30">
+        <h1>Lorem ipsum dolor</h1>
+        <p class="size18">Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in
+          <strong>voluptate velit esse cillum dolore eu</strong>
+          fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id
+          est laborum</p>
+      </div>
     </div>
-  </div>
-  <div class="flex space_around align_center mt40 align_right">
-    <div class="w30">
-      <h1>Lorem ipsum dolor</h1>
-      <p class="size18">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in
-        <strong>voluptate velit esse cillum dolore eu</strong>
-        fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id
-        est laborum</p>
+    <div class="flex space_around align_center mb40 align_right">
+      <div class="w30">
+        <h1>Lorem ipsum dolor</h1>
+        <p class="size18">Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in
+          <strong>voluptate velit esse cillum dolore eu</strong>
+          fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id
+          est laborum</p>
+      </div>
+      <figure class="w25">
+        <img src="assets/img/phone2.png">
+      </figure>
     </div>
-    <figure class="w25">
-      <img src="assets/img/phone2.png">
-    </figure>
-  </div>
-  <div class="flex space_around align_center mt40">
-    <figure class="w25">
-      <img src="assets/img/phone3.png">
-    </figure>
-    <div class="w30">
-      <h1>Lorem ipsum dolor</h1>
-      <p class="size18">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in
-        <strong>voluptate velit esse cillum dolore eu</strong>
-        fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id
-        est laborum</p>
+    <div class="flex space_around align_center mb40">
+      <figure class="w25">
+        <img src="assets/img/phone3.png">
+      </figure>
+      <div class="w30">
+        <h1>Lorem ipsum dolor</h1>
+        <p class="size18">Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in
+          <strong>voluptate velit esse cillum dolore eu</strong>
+          fugiat nulla pariatur. Excepteur sint
+          occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id
+          est laborum</p>
+      </div>
     </div>
   </div>
 </main>
-<div class="bg_primary mt40 flex center align_center footer">
+<div class="bg_primary flex center align_center footer">
   <p class="txt_light size26">REJOIGNEZ NOUS</p>
   <button class="btn bg_light txt_primary hover_light" (click)="showInscription = true">Inscription</button>
 </div>

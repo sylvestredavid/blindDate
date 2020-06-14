@@ -1,0 +1,92 @@
+<div class="flex p40" *ngIf="user">
+  <div class="column1">
+    <div class="sticky">
+      <div class="flex flex_column w50 m_auto">
+        <figure class="profil_img relative">
+          <img appSquareImage src="{{user.profil.lienPhoto}}"
+               class="round_img"/>
+          <div class="round_edit bg_light" *ngIf="isCurentUserProfil" (click)="showPopupEditProfilImg = true">
+            <img src="assets/icons/edit.svg">
+          </div>
+        </figure>
+        <div class="txt_center">
+          <p class="mt0">{{user.username}}<br>
+            {{user.profil.dateDeNaissance | date: 'dd/MM/yyyy'}} ({{getAge()}}ans)<br>
+            {{user.profil.localisation.ville}}</p>
+        </div>
+        <button (click)="showConversation = true">envoyer message</button>
+        <div>
+          <p class="txt_center">Smacks: <span class="txt_primary bold">{{user.smacks}}</span></p>
+        </div>
+      </div>
+      <div class="description bg_light">
+        <ng-container *ngIf="!editDescr">
+          <p>{{user.profil.description}}</p>
+          <div class="flex flex_end">
+            <button class="btn bg_light txt_primary hover_primary" (click)="editDescr = true"
+                    *ngIf="isCurentUserProfil">
+              modifier
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="editDescr">
+          <textarea appTextareaAutoResize autofocus [(ngModel)]="newDescr" class="mh16"></textarea>
+          <div class="flex flex_end">
+            <button class="btn bg_dark txt_light hover_dark" (click)="closeEditDescr()">Annuler</button>
+            <button class="btn bg_primary txt_light hover_primary ml10" (click)="onUpdateDescr()">Envoyer</button>
+          </div>
+        </ng-container>
+      </div>
+      <div class="photos bg_light">
+        <div class="photos_container flex">
+          <ng-container *ngFor="let photo of photos; let i = index">
+            <div *ngIf="i < 8 || seeAllImg" class="img" appSquareImage>
+              <div [appBackgroundImage]="photo.lienPhoto" (click)="seeImg(photo)"></div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="flex flex_end">
+          <button class="btn bg_light txt_primary hover_primary" (click)="seeAllImg = true">voir plus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column2 pt40">
+    <app-mur [isCurentUserMur]="isCurentUserProfil" [mur]="mur"></app-mur>
+  </div>
+</div>
+<div class="popup" *ngIf="showPopupEditProfilImg">
+  <div class="popup_bg bg_light">
+    <div *ngIf="!newImgProfilLien && !loading">
+      <label for="profil_file" class="popup_edit_img_profil_input bg_primary txt_light flex center align_center">
+        <img src="assets/icons/camera_white.svg"/> uploader une photo
+      </label>
+      <input type="file" id="profil_file" (change)="uploadProfilFile($event)" class="display_none"/>
+    </div>
+    <div *ngIf="newImgProfilLien">
+      <figure class="popup_edit_img_profil_preview">
+        <img src="{{newImgProfilLien}}">
+      </figure>
+    </div>
+    <div id="animation" *ngIf="loading">
+      <lottie-animation-view
+        [options]="lottieConfig">
+      </lottie-animation-view>
+    </div>
+    <div class="flex flex_end">
+      <button class="btn bg_dark txt_light hover_dark" (click)="closeEditImgProfil()">Annuler</button>
+      <button class="btn bg_primary txt_light hover_primary ml10" (click)="onSendNewImgProfil()">Envoyer</button>
+    </div>
+  </div>
+</div>
+<div class="popup" *ngIf="showImg">
+  <figure class="close" (click)="showImg = false">
+    <img src="assets/img/close.png">
+  </figure>
+  <app-post class="popup_bg bg_light p0 w40" [isCurentUserProfil]="isCurentUserProfil" [post]="imgToSee" [user]="user"
+            (toggleLike)="toggleLike($event)" (deletePost)="onDeletePostPopup($event)"
+            (editPost)="onEditPost($event)"></app-post>
+</div>
+<ng-container *ngIf="showConversation">
+  <app-conversation [conversation]="conversation" (close)="showConversation = false"></app-conversation>
+</ng-container>

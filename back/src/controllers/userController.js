@@ -6,21 +6,6 @@ var jwt = require('jsonwebtoken')
 
 const User = mongoose.model('Users', UserSchema)
 
-/*
-*enregistrer un nouvel utilisateur
-*/
-export const register = (req, res) => {
-    let newUser = new User(req.body)
-    newUser.password = bcrypt.hashSync(req.body.password, 10)
-
-    newUser.save((err, user) => {
-        if (err) {
-            res.send(err)
-        }
-        res.json(user)
-    })
-}
-
 function userMap(user) {
     return {
         _id: user._id,
@@ -28,11 +13,42 @@ function userMap(user) {
         email: user.email,
         profil: user.profil,
         contacts: user.contacts,
-        posts: user.posts,
-        photos: user.photos,
+        publications: user.publications,
         smacks: user.smacks,
-        recherche: user.recherche
+        recherche: user.recherche,
+        connected: user.connected
     };
+}
+
+/*
+*enregistrer un nouvel utilisateur
+*/
+export const register = (req, res) => {
+    let newUser = new User(req.body)
+    newUser.password = bcrypt.hashSync(req.body.password, 10)
+
+    newUser.save((err, newUSer) => {
+        if (err) {
+            res.send(err)
+        }
+        User.findOne({
+            email: newUSer.email
+        })
+            .populate('publications')
+            .exec((err, user) => {
+                if (err) throw err;
+                if (!user) {
+                    res.status(401).json({ message: 'Utilisateur inconnu.' });
+                } else if (user) {
+                    if (!user.comparePassword(req.body.password)) {
+                        res.status(401).json({ message: 'utilisateur ou mot de passe incorrect.' });
+                    } else {
+                        const userReturn = userMap(user)
+                        return res.json({token: jwt.sign(userReturn, 'RESTFULAPIs')});
+                    }
+                }
+            });
+    })
 }
 
 /*
@@ -40,8 +56,10 @@ function userMap(user) {
 */
 export const sign_in = function(req, res) {
     User.findOne({
-        username: req.body.username
-    }, function(err, user) {
+        email: req.body.email
+    })
+        .populate('publications')
+        .exec((err, user) => {
       if (err) throw err;
       if (!user) {
         res.status(401).json({ message: 'Utilisateur inconnu.' });
@@ -61,7 +79,7 @@ export const sign_in = function(req, res) {
 *recuperer tout les utilisateurs
 */
 export const getUsers = (req, res) => {
-    User.find({}).populate('posts').populate('photos').exec((err, users) => {
+    User.find({}).populate('publications').exec((err, users) => {
         if (err) {
             res.send(err)
         }
@@ -76,23 +94,37 @@ export const getUsers = (req, res) => {
 *modifier un utilisateur
 */
 export const updateUser = (req, res) => {
-    User.findOneAndUpdate({ _id: req.params.userId}, req.body, {new: true}, (err, user) => {
+    User.findOneAndUpdate({ _id: req.params.userId}, req.body, {new: true}).populate('publications').exec((err, user) => {
         if (err) {
             res.send(err)
         }
-        res.json(user)
+        res.json(userMap(user))
     })
 }
 
 /*
  * récuperer un user
  */
-export const getUsertWithId = (req, res) => {
-  User.find(req.params.userId).populate('posts').populate('photos').exec((err, user) => {
+export const getUserContacts = (req, res) => {
+    console.log(req.params.userId)
+  User.find({ contacts: req.params.userId}).populate('publications').exec((err, users) => {
         if (err) {
             res.send(err)
         }
-        res.json(user)
+      let usersReturn = [];
+      users.forEach(u => usersReturn.push(userMap(u)))
+        res.json(usersReturn)
+    })
+}
+
+export const getListeAttenteTchat = (req, res) => {
+  User.find({ listeAttentTchat: true}).exec((err, users) => {
+        if (err) {
+            res.send(err)
+        }
+      let usersReturn = [];
+      users.forEach(u => usersReturn.push(userMap(u)))
+        res.json(usersReturn)
     })
 }
 

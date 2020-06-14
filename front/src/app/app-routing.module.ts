@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     loadChildren: './landing/landing.module#LandingModule'
   },
+  {
+    path: 'core',
+    loadChildren: './core/core.module#CoreModule'
+  }
 ];
 
 @NgModule({

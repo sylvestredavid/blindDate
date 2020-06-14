@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./src/index.js --exec babel-node -e js"
+    "start": "nodemon ./src/index.js --exec babel-node -e js",
+    "sockets": "nodemon ./src/sockets.js --exec babel-node -e js"
   },
   "author": "david sylvestre",
   "license": "ISC",
@@ -17,7 +18,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.7",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

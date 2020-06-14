@@ -1,0 +1,103 @@
+.post {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.menu_icon {
+  width: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.menuPost {
+  position: absolute;
+  top: 34px;
+  right: 18px;
+  /* border: 1px solid #202020; */
+  box-shadow: 1px 1px 3px #202020;
+  padding: 0 50px 0 10px;
+  z-index: 10;
+  border-radius: 3px;
+  background-color: #ecedf1;
+}
+
+.menuPost p:hover {
+  color: #ED147D;
+  cursor: pointer
+}
+
+.post_photo {
+  width: 50%;
+  margin: auto;
+}
+
+.post_profil_img {
+  width: 40px;
+  margin: 0 10px 0 0;
+  cursor: pointer
+}
+
+.post_profil_img .round_img {
+  border-radius: 50%;
+  border: none;
+  object-fit: cover;
+}
+
+.btn_icon {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.btn_icon img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.popup{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.popup_bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.btn {
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.edit_post_input {
+  width: 100%;
+  resize: none;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  font-family: "Times New Roman", "sans-serif";
+  border: none;
+  outline: transparent;
+}
+
+.lien_profil:hover {
+  color: #ED147D;
+  cursor: pointer
+}

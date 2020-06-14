@@ -1,0 +1,14 @@
+<ng-container *ngIf="contacts">
+  <ng-container *ngFor="let notif of notifications">
+    <div class="flex space_between align_center notif" [ngClass]="!notif.vu ? 'new' : ''">
+      <div class="img_user" appSquareImage [appBackgroundImage]="getUserPhoto(notif.userFrom)" (click)="goToProfil(notif.userFrom, notif)"></div>
+      <div class="content" [ngClass]="notif.lienPhoto ? 'w60' : 'w80'" (click)="goToPost(notif.userId, notif)">
+        <p>{{notif.message}}</p>
+        <small class="txt_primary">{{notif.date | timeDiff}}</small>
+      </div>
+      <ng-container class="img_post" *ngIf="notif.lienPhoto">
+        <div class="img_post" appSquareImage [appBackgroundImage]="notif.lienPhoto" (click)="goToPost(notif.userId, notif)"></div>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>

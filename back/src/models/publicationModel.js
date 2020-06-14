@@ -4,9 +4,13 @@ import mongoose from 'mongoose'
 var ObjectId = mongoose.Schema.Types.ObjectId;
 const Schema = mongoose.Schema;
 
-export const PhotoSchema = new Schema({
-    lien: String,
-    legend: String,
+export const PublicationSchema = new Schema({
+    date: {
+        type: Date,
+
+    },
+    contenu: String,
+    lienPhoto: String,
     likes: [ObjectId],
     commentaires: [
         {

@@ -1,4 +1,7 @@
+import {PublicationModel} from "./publication.model";
+
 export interface UserModel {
+  _id?: string;
   username?: string,
   password?: string,
   email?: string,
@@ -15,14 +18,15 @@ export interface UserModel {
     sexe?: string,
     lienPhoto?: string
   },
-  contacts?: [string],
-  posts?: any[],
-  photos?: any[],
+  contacts?: string[],
+  publications?: PublicationModel[],
   smacks?: number,
   recherche?: {
     ageMin?: number,
     ageMax?: number,
     sexe?: string,
     RayonEnMetres?: number
-  }
+  };
+  connected?: boolean;
+  listeAttentTchat?: boolean;
 }

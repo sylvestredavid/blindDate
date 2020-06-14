@@ -35,14 +35,13 @@ export const UserSchema = new Schema({
         sexe: String,
         lienPhoto: String
     },
-    contacts: [ObjectId],
-    posts: [{
+    contacts: [{
         type: ObjectId,
-        ref: 'Posts'
+        ref: 'Users'
     }],
-    photos: [{
+    publications: [{
         type: ObjectId,
-        ref: 'Photos'
+        ref: 'Publications'
     }],
     smacks: Number,
     recherche: {
@@ -50,7 +49,9 @@ export const UserSchema = new Schema({
         ageMax: Number,
         sexe: String,
         RayonEnMetres: Number
-    }
+    },
+    connected:Boolean,
+    listeAttentTchat: Boolean,
 })
 
 UserSchema.methods.comparePassword = function(mdp) {

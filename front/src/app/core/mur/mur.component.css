@@ -1,0 +1,154 @@
+.column1 {
+  width: 25%;
+}
+
+.profil_img {
+  margin-bottom: 20px;
+}
+
+.round_img {
+  border: 5px solid #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.btn {
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.description {
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 40px;
+}
+
+.photos {
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 40px;
+}
+
+.photos p {
+  text-align: right;
+}
+
+.photos_container {
+  flex-wrap: wrap;
+}
+
+.photos_container .img {
+  width: 25%;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: pointer
+}
+
+.photos_container .img div {
+  height: 100%;
+}
+
+.column2 {
+  width: 50%;
+  margin-left: 60px;
+}
+
+.new_post {
+  min-height: 50px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 60px;
+}
+
+.new_post p {
+  color: gray;
+  cursor: text;
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  outline: transparent;
+  resize: none;
+  font-family: "Times New Roman", "sans-serif";
+  font-size: 16px;
+  overflow-y: hidden;
+}
+
+.btn_icon {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.btn_icon img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.round_edit {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.round_edit img {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.popup_edit_img_profil_input {
+  width: 50%;
+  margin: auto;
+  border: 1px solid #ED147D;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.popup_edit_img_profil_input img {
+  width: 10%;
+  margin-right: 10px
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+}
+
+.close:hover {
+  cursor: pointer
+}

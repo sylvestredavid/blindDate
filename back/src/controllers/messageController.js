@@ -40,3 +40,12 @@ export const deleteMessage = (req, res) => {
         res.json({message: "Effacer message avec succès"})
     })
 }
+
+export const updateMessage = (req, res) => {
+    Message.findOneAndUpdate({ _id: req.params.messageId}, req.body, {new: true}, (err, message) => {
+        if (err) {
+            res.send(err)
+        }
+        res.json(message)
+    })
+}

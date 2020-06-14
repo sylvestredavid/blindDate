@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {UserModel} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
+import * as jwt_decode from 'jwt-decode';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-inscription',
@@ -30,7 +32,7 @@ export class InscriptionComponent implements OnInit {
   rechercheError: string;
   naissanceError: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.anneeNaissance = 'AAAA';
@@ -41,8 +43,9 @@ export class InscriptionComponent implements OnInit {
     this.initAnneesList();
     this.step = 1;
     this.userToCreate = {
-      profil: {localisation: {}},
-      recherche: {}
+      profil: {localisation: {}, description: 'Pas de description.'},
+      recherche: {},
+      smacks: 0
     }
   }
 
@@ -55,7 +58,7 @@ export class InscriptionComponent implements OnInit {
 
   }
 
-  onCheckAndGo() {
+  onCheckAndGoNext() {
     this.userService.existByEmail(this.userToCreate.email).subscribe(
       (resEmail: any) => {
         const emailExist = resEmail.emailExist
@@ -116,7 +119,6 @@ export class InscriptionComponent implements OnInit {
       if(!this.userToCreate.profil.localisation.latitude) {
         this.userService.getCoordonnees(this.userToCreate.profil.localisation.ville).subscribe(
           (c: any) => {
-            console.log(c)
             this.userToCreate.profil.localisation.latitude = c.results[0].geometry.location.lat;
             this.userToCreate.profil.localisation.longitude = c.results[0].geometry.location.lng;
             this.validateFormAndSubmit()
@@ -173,9 +175,15 @@ export class InscriptionComponent implements OnInit {
   }
 
   private validateFormAndSubmit() {
-        this.userToCreate.profil.dateDeNaissance = new Date(+this.anneeNaissance, +this.moisNaissance - 1, +this.jourNaissance + 1)
+        this.userToCreate.profil.dateDeNaissance = new Date(+this.anneeNaissance, +this.moisNaissance - 1, +this.jourNaissance)
+        this.userToCreate.profil.lienPhoto = this.userToCreate.profil.sexe === 'Homme'? 'assets/img/anonymeM.png' : 'assets/img/anonymeF.png'
         this.userService.createUser(this.userToCreate).subscribe(
-          () => console.log('ok')
+          (res: any) => {
+            const user = jwt_decode(res.token);
+            this.userService.updateCurentUser(user)
+            sessionStorage.setItem('token', res.token)
+            this.router.navigate(['core/profil/' + user._id])
+          },
         )
   }
 

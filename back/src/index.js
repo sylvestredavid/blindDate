@@ -1,27 +1,24 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import {postRoutes} from './routes/postRoutes'
+import {publicationRoutes} from './routes/publicationRoutes'
 import {userRoutes} from './routes/userRoutes'
-import {photoRoutes} from "./routes/photoRoutes";
 import {utils} from "./utils";
 import {notificationRoutes} from "./routes/notificationRoutes";
 import {messageRoutes} from "./routes/messageRoutes";
-import { exec } from 'child_process'
 
 const app = express();
 const PORT = 3000;
 
 //connexion mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/speedLovebd', {
+mongoose.connect('mongodb+srv://david:Myriam24@cluster0-gaxim.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true
 })
 
 utils(app)
 
-postRoutes(app)
+publicationRoutes(app)
 userRoutes(app)
-photoRoutes(app)
 notificationRoutes(app)
 messageRoutes(app)
 
@@ -32,5 +29,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () =>{
     console.log(`Server listen port ${PORT}`)
-    exec('cd.. && cd front && ng serve');
+    // exec('cd.. && cd front && ng serve');
 } )

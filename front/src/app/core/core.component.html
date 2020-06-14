@@ -1,0 +1,60 @@
+<header>
+  <nav class="nav bg_light flex space_between">
+    <figure class="nav_img">
+      <img src="assets/img/logo.png">
+    </figure>
+    <div class="btn_container flex">
+      <button (click)="navig('')" class="btn_icon" [ngClass]="activeRoute === '' ? 'btn_icon_active' : ''">
+        <img src="{{activeRoute === '' ? 'assets/icons/homepage_active.svg' : 'assets/icons/homepage.svg'}}"/>
+        Accueil
+      </button>
+      <button (click)="navig('profil/'+curentUser._id)" class="btn_icon"
+              [ngClass]="activeRoute === 'profil/'+curentUser._id ? 'btn_icon_active' : ''">
+        <img class="round" appSquareImage src="{{curentUser.profil.lienPhoto}}"/>
+        Profil
+      </button>
+      <button (click)="onShowConversations()" class="btn_icon relative">
+        <div class="round_notification bg_primary" *ngIf="nbNewMessages > 0"><p
+          class="txt_light m0 bold">{{nbNewMessages}}</p></div>
+        <img src="assets/icons/chat.svg"/>
+        Messages
+      </button>
+      <button (click)="onShowNotifications()" class="btn_icon relative">
+        <div class="round_notification bg_primary" *ngIf="nbNewNotifications > 0"><p
+          class="txt_light m0 bold">{{nbNewNotifications}}</p></div>
+        <img src="assets/icons/notification.svg"/>
+        Notifications
+      </button>
+      <div class="notifications" *ngIf="showNotifications" (appClickOutside)="showNotifications = false">
+        <app-notifications (close)="showNotifications = false"></app-notifications>
+      </div>
+    </div>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<div class="popup" *ngIf="showConversations">
+  <div class="popup_bg bg_light">
+    <div class="close" (click)="showConversations = false">
+      <img src="assets/icons/close.svg">
+    </div>
+    <ng-container *ngIf="conversations.length > 0">
+      <ng-container *ngFor="let c of conversations">
+        <div class="message"
+             [ngClass]="c.messages[0].userTo === curentUser._id && !c.messages[0].vu ? 'newMsg' : ''"
+        (click)="onSeeConverstaion(c)">
+          <div class="flex align_center">
+            <div class="img_user" appSquareImage [appBackgroundImage]="c.contact.profil.lienPhoto"></div>
+            <p class="m0 username">{{c.contact.username}}</p>
+          </div>
+          <p class="m0"><span *ngIf="c.messages[0].userFrom === curentUser._id">vous: </span>{{c.messages[0].message}}
+          </p>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+<ng-container *ngIf="showConversation">
+  <app-conversation [conversation]="conversationAVoir" (close)="showConversation = false"></app-conversation>
+</ng-container>

@@ -1,0 +1,26 @@
+.notif {
+  padding: 10px;
+  border-bottom: 1px solid #FFF;
+}
+
+.img_user {
+  width: 15%;
+  border-radius: 50%;
+}
+
+.content {
+  width: 50%;
+}
+
+.content p {
+  margin-bottom: 0;
+}
+
+.img_post {
+  width: 15%;
+  margin: 0;
+}
+
+.new{
+  background-color: rgba(237,20,125,0.12);
+}

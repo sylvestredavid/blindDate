@@ -5,6 +5,7 @@ import { LandingComponent } from './landing.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import { ConnexionComponent } from './connexion/connexion.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -18,7 +19,8 @@ import { ConnexionComponent } from './connexion/connexion.component';
         component: LandingComponent,
       }
     ]),
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class LandingModule { }
